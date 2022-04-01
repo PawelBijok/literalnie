@@ -127,7 +127,19 @@ func main() {
 
 	for i, letter := range enteredWorld {
 		if(enteredWeights[i] == '0') {
-			forbiddenLetters = append(forbiddenLetters, string(letter))
+			//check if this letter is known at other position
+			indexes := findLetterIndexes(enteredWorld, string(letter))
+			delete := true
+			for _, index := range indexes {
+				if(index != i) {
+					delete = false
+					break
+				}
+			}
+			if(delete) {
+				forbiddenLetters = append(forbiddenLetters, string(letter))
+			}
+		
 		}
 	}
 
@@ -168,13 +180,20 @@ func main() {
 			}
 		}
 	}
-
-	if wordsLenght == 1 {
-		fmt.Printf("\n Słowo dnia to: %s", words[0])
+	if(wordsLenght == 0) {
+		fmt.Printf("\n Nie mamy nic do zaproponowania!\n")
 		return 
 	}
+	if wordsLenght == 1 {
+		fmt.Printf("\n***********************************************\n")
+		fmt.Printf("\nSłowo dnia to: %s\n", words[0])
+		fmt.Printf("\n***********************************************\n")
+		return 
+	}
+	fmt.Println("\nMożliwe słowa:")
 	for i, word := range words {
-		fmt.Println(i, word)
+		
+		fmt.Println(i+1, word)
 	}
 
 	fmt.Printf("\n\n Chcesz kontynuować (T/N): ")
