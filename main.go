@@ -143,13 +143,26 @@ func main() {
 		}
 	}
 
-	//removing  words that contains forbidden letters
 	wordsLenght := len(words)
+	//removing  words that contains forbidden letters
 	for i:=0; i<wordsLenght; i++ {
 		if(containsLetterAtAnyPosition(words[i], forbiddenLetters)) {
 			words = append(words[:i], words[i+1:]...)
 			i--;
 			wordsLenght--
+		}
+	}
+	//removind words that have forbidden letters at specyfic position
+	for i:=0; i<wordsLenght; i++ {
+		for j, letter := range enteredWorld {
+			if enteredWeights[j]== '0' {
+				if containsLetterAtSpecyficPosition(words[i], string(letter), j) == true {
+				words = append(words[:i], words[i+1:]...)
+				i--;
+				wordsLenght--
+				break
+				}
+		}
 		}
 	}
 
