@@ -1,20 +1,32 @@
-#Literalnie cracker
+# Literalnie cracker
 
 ### Prosty cli do wygrywania Literalnie (Worldly) napisany w GO
 
-## Instalacja
+---
+
+## RUN
+
+`$ go run .`
 
 ---
 
-**RUN**
+## INSTALL
 
-`go run .`
+`$ go install`
 
-**INSTALL**
+_remeber to export path to install direcotry_
 
-`go install`
-remeber to export path to install direcotry
+### 1. check install direcotry:
 
-**RUN AFTER INSTALL**
+`$ go list -f '{{.Target}}'`
 
-`literalnie`
+### 2. update PATH:
+
+**for Mac/Linux**  
+`$ export PATH=$PATH:/path/to/your/install/directory`
+**for Windows**  
+`$ set PATH=%PATH%;C:\path\to\your\install\directory`
+
+### 3. run after installation
+
+`$ literalnie`
