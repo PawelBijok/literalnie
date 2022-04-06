@@ -24,6 +24,7 @@ _remeber to export path to install direcotry_
 
 **for Mac/Linux**  
 `$ export PATH=$PATH:/path/to/your/install/directory`
+
 **for Windows**  
 `$ set PATH=%PATH%;C:\path\to\your\install\directory`
 

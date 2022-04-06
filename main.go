@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 )
 
 func containsWord(words *[]string, word string) bool {
@@ -121,6 +122,9 @@ func main() {
 		}
 		inputError = false
 	}
+	
+	//get timestamp
+	start := time.Now();
 
 	//maping letters that are not allowed
 	var forbiddenLetters []string
@@ -131,7 +135,7 @@ func main() {
 			indexes := findLetterIndexes(enteredWorld, string(letter))
 			delete := true
 			for _, index := range indexes {
-				if(index != i) {
+				if(index != i && enteredWeights[index] != '0') {
 					delete = false
 					break
 				}
@@ -193,6 +197,9 @@ func main() {
 			}
 		}
 	}
+	end := time.Now();
+	difference := end.Sub(start)
+	
 	if(wordsLenght == 0) {
 		fmt.Printf("\n Nie mamy nic do zaproponowania!\n")
 		return 
@@ -208,7 +215,7 @@ func main() {
 		
 		fmt.Println(i+1, word)
 	}
-
+	fmt.Printf("\nWyniki znaleziono w: %s\n", difference)
 	fmt.Printf("\n\n Chcesz kontynuować (T/N): ")
 	exit := "T"
 	fmt.Scanln(&exit);
