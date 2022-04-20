@@ -14,7 +14,7 @@
 
 `$ go install`
 
-_remeber to export path to install direcotry_
+_remeber to export path to install directory_
 
 ### 1. check install direcotry:
 
